@@ -7,6 +7,12 @@ jobs:
       image: ubuntu-2004:202107-02
     steps:
       - checkout
-      - run: 'docker build -f Dockerfile -t tp1docker .'
-      - run: 'docker run -d -p 8080:8080 tp1docker'
-      - run: 'curl http://localhost:8080/' 
+      - run: 
+          name: docker build en fonction du Dockerfile
+          command: 'docker build -f Dockerfile -t tp1docker .'
+      - run: 
+          name: docker run sur le port 8080
+          command: 'docker run -d -p 8080:8080 tp1docker'
+      - run: 
+          name: Test curl 
+          command: 'curl http://localhost:8080/' 
