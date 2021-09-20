@@ -7,3 +7,4 @@ jobs:
       - image: node:latest
     steps:
       - checkout
+      - run: 'npm start'
