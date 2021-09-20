@@ -8,4 +8,4 @@ jobs:
     steps:
       - checkout
       - run: 'docker build -f Dockerfile -t tp1docker .'
-      - run: 'docker run -d -p 8081:8080 tp1docker'
+      - run: 'docker run -d -p 8080:8080 tp1docker'
