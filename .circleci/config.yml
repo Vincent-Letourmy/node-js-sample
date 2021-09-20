@@ -8,11 +8,17 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: docker build en fonction du Dockerfile
-          command: 'docker build -f Dockerfile -t tp1docker .'
+          name: Docker build en fonction du Dockerfile
+          command: 'docker build -f Dockerfile -t vletourmy/tp1cicd .'
       - run: 
-          name: docker run sur le port 8080
-          command: 'docker run -d -p 8080:8080 tp1docker'
+          name: Docker run sur le port 8080
+          command: 'docker run -d -p 8080:8080 vletourmy/tp1cicd'
       - run: 
           name: Test curl 
           command: 'curl http://localhost:8080/' 
+      - run:
+          name: Docker login to vletourmy on dockerhub
+          command: 'docker login -u vletourmy -p $DOCKERHUB_VLETOURMY'
+      - run:
+          name: Docker push to vletourmy/tp1cicd
+          command: 'docker push vletourmy/tp1cicd'
